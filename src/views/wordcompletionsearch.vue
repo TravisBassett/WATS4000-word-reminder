@@ -50,9 +50,9 @@ export default {
   methods: {
     findWords: function() {
       axios
-        .get("https://api.datamuse.com/words", {
+        .get("https://api.datamuse.com/sug", {
           params: {
-            rel_jjb: this.noun
+            s: this.noun
           }
         })
         .then(response => {

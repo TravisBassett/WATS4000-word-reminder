@@ -52,7 +52,7 @@ export default {
       axios
         .get("https://api.datamuse.com/words", {
           params: {
-            rel_jjb: this.noun
+            rel_trg: this.noun
           }
         })
         .then(response => {
