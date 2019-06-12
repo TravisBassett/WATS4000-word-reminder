@@ -1,6 +1,7 @@
 <template>
-  <div class="wordcompletionsearch">
-    <h2>Rhymesaurus: The Rhyming Thesaurus</h2>
+  
+<div class="wordcompletionsearch">
+    <h2>Use the word completion tool on EasyWordFinder.</h2>
     <p>
       <router-link to="/">Search for words associated with other words.</router-link>
     </p>
@@ -8,11 +9,17 @@
       <router-link to="/describedbysearch">Search for words described by other words.</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
-      <p>Find rhymes for <input type="text" v-model="rhyme"> related to <input type="text" v-model="phrase"> <button type="submit">Search</button></p>
+      <p>
+        Enter the first letters of a word and we'll try to guess it
+        <input type="text" v-model="noun">
+        <button type="submit">Search</button>
+      </p>
     </form>
     <ul v-if="results && results.length > 0" class="results">
       <li v-for="item of results">
-        <p><strong>{{item.word}}</strong></p>
+        <p>
+          <strong>{{item.word}}</strong>
+        </p>
         <p>{{item.score}}</p>
       </li>
     </ul>
@@ -22,43 +29,41 @@
     </div>
 
     <ul v-if="errors && errors.length > 0" class="errors">
-      <li v-for="error of errors">
-        {{error.message}}
-      </li>
+      <li v-for="error of errors">{{error.message}}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  name: 'wordcompletionsearch',
-  data () {
+  name: "wordcompletionsearch",
+  data() {
     return {
       results: null,
       errors: [],
-      phrase: '',
-      rhyme: ''
-    }
+      noun: '',
+      
+    };
   },
   methods: {
-    findWords: function(){
-      axios.get('https://api.datamuse.com/words', {
-        params: {
-          ml: this.phrase,
-          rel_rhy: this.rhyme
-        }
-      })
-      .then(response => {
-        this.results = response.data;
-      })
-      .catch(error => {
-        this.errors.push(error);
-      });
+    findWords: function() {
+      axios
+        .get("https://api.datamuse.com/words", {
+          params: {
+            rel_jjb: this.noun
+          }
+        })
+        .then(response => {
+          this.results = response.data;
+        })
+        .catch(error => {
+          this.errors.push(error);
+        });
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -67,7 +72,7 @@ export default {
   font-size: 1.4rem;
 }
 
-input[type="text"]{
+input[type="text"] {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -76,10 +81,10 @@ input[type="text"]{
   font-size: 1.4rem;
   color: #2c3e50;
   font-weight: 300;
-  background: rgba(0,0,0,0.02);
+  background: rgba(0, 0, 0, 0.02);
   padding: 0.5rem;
 }
-button{
+button {
   background: #333;
   padding: 0.5rem;
   font-weight: 300;
@@ -88,7 +93,8 @@ button{
   cursor: pointer;
   font-size: 1.4rem;
 }
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -105,7 +111,7 @@ ul.results {
   width: 200px;
   min-height: 100px;
   color: #fff;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
 }
 ul.errors {
   list-style-type: none;

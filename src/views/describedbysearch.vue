@@ -1,6 +1,7 @@
 <template>
-  <div class="describedbysearch">
-      <h2>Find an Adjective with DataMuse!</h2>
+  
+<div class="describedbysearch">
+      <h2>Find words commonly described by the search word using EasyWordFinder.</h2>
     <p>
       <router-link to="/">Search for words associated with other words.</router-link>
     </p>
@@ -9,7 +10,7 @@
     </p>
     <form v-on:submit.prevent="findWords">
       <p>
-        Find adjective for a given noun
+        Find a word by a word that commonly describes it
         <input type="text" v-model="noun">
         <button type="submit">Search</button>
       </p>
