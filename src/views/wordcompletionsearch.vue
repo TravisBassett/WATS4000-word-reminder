@@ -50,7 +50,7 @@ export default {
   methods: {
     findWords: function() {
       axios
-        .get("https://api.datamuse.com/sug", {
+        .get("https://api.datamuse.com/sug?", {
           params: {
             s: this.noun
           }
