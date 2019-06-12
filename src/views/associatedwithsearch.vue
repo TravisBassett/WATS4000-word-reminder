@@ -1,8 +1,11 @@
 <template>
-  <div class="rhymesaurus">
+  <div class="associatedwithsearch">
     <h2>Rhymesaurus: The Rhyming Thesaurus</h2>
     <p>
-      <router-link to="/adjfornoun">Adjective For Noun</router-link>
+      <router-link to="/describedbysearch">Search for words described by other words.</router-link>
+    </p>
+    <p>
+      <router-link to="/wordcompletionsearch">Word completion tool.</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
       <p>Find rhymes for <input type="text" v-model="rhyme"> related to <input type="text" v-model="phrase"> <button type="submit">Search</button></p>
@@ -30,7 +33,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'Rhymesaurus',
+  name: 'associatedwithsearch',
   data () {
     return {
       results: null,
@@ -60,7 +63,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rhymesaurus {
+.associatedwithsearch {
   font-size: 1.4rem;
 }
 

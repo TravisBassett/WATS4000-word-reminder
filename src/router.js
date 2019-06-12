@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Rhymesaurus from '@/views/Rhymesaurus'
+import associatedwithsearch from '@/views/associatedwithsearch'
 // TODO: Import new component
-import Adjfornoun from '@/views/Adjfornoun'
+import describedbysearch from '@/views/describedbysearch'
+import wordcompletionsearch from '@/views/wordcompletionsearch'
 
 Vue.use(Router)
 
@@ -10,13 +11,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Rhymesaurus',
-      component: Rhymesaurus
+      name: 'associatedwithsearch',
+      component: associatedwithsearch
     },
     {
-      path: '/adjfornoun',
-      name: 'adjfornoun',
-      component: Adjfornoun
+      path: '/describedbysearch',
+      name: 'describedbysearch',
+      component: describedbysearch
+    },
+    {
+      path: '/wordcompletionsearch',
+      name: 'wordcompletionsearch',
+      component: wordcompletionsearch
     }
     // TODO: Add new route definition here.
   ]

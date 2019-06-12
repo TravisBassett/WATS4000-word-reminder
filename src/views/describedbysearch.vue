@@ -1,8 +1,11 @@
 <template>
-  <div class="adjfornoun">
+  <div class="describedbysearch">
       <h2>Find an Adjective with DataMuse!</h2>
     <p>
-      <router-link to="/">Rhymesaurus!</router-link>
+      <router-link to="/">Search for words associated with other words.</router-link>
+    </p>
+    <p>
+      <router-link to="/wordcompletionsearch">Word completion tool.</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
       <p>
@@ -34,7 +37,7 @@
 import axios from "axios";
 
 export default {
-  name: "Adjfornoun",
+  name: "describedbysearch",
   data() {
     return {
       results: null,
@@ -64,7 +67,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.adjfornoun {
+.describedbysearch {
   font-size: 1.4rem;
 }
 
