@@ -1,5 +1,6 @@
 # Using APIs to Provide Data
 
+
 > Practicing using APIs to retreive data in an application.
 
 It is very common to use third-party data APIs to enhance our applications. It
