@@ -3,10 +3,13 @@
 <div class="wordcompletionsearch">
     <h2>Use the word completion tool on EasyWordFinder.</h2>
     <p>
-      <router-link to="/">Search for words associated with other words.</router-link>
+      <router-link to="/associatedwithsearch">Search for words associated with other words.</router-link>
     </p>
     <p>
       <router-link to="/describedbysearch">Search for words described by other words.</router-link>
+    </p>
+    <p>
+      <router-link to="/">Home.</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
       <p>

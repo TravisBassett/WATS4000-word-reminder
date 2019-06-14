@@ -8,6 +8,9 @@
     <p>
       <router-link to="/wordcompletionsearch">Word completion tool.</router-link>
     </p>
+        <p>
+      <router-link to="/">Home.</router-link>
+    </p>
     <form v-on:submit.prevent="findWords">
       <p>
         Search for a word by association
@@ -50,7 +53,7 @@ export default {
   methods: {
     findWords: function() {
       axios
-        .get("https://api.datamuse.com/words", {
+        .get("https://api.datamuse.com/words?*", {
           params: {
             rel_trg: this.noun
           }

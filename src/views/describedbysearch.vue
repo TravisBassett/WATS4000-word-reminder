@@ -3,10 +3,13 @@
 <div class="describedbysearch">
       <h2>Find words commonly described by the search word using EasyWordFinder.</h2>
     <p>
-      <router-link to="/">Search for words associated with other words.</router-link>
+      <router-link to="/associatedwithsearch">Search for words associated with other words.</router-link>
     </p>
     <p>
       <router-link to="/wordcompletionsearch">Word completion tool.</router-link>
+    </p>
+        <p>
+      <router-link to="/">Home.</router-link>
     </p>
     <form v-on:submit.prevent="findWords">
       <p>
