@@ -56,6 +56,7 @@ export default {
       results: null,
       errors: [],
       adjective: '',
+      showSpinner: false
       
     };
   },

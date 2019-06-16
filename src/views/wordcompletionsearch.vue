@@ -55,6 +55,7 @@ export default {
       results: null,
       errors: [],
       partial: '',
+      showSpinner: false
       
     };
   },
