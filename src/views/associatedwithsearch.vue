@@ -2,6 +2,7 @@
 
 <div class="associatedwithsearch">
     <h2>Find words associated with each other using the EasyWordFinder.</h2>
+    <!--router links to other search types and landing page-->
     <p>
       <router-link to="/describedbysearch">Search for words described by other words.</router-link>
     </p>
@@ -11,6 +12,7 @@
         <p>
       <router-link to="/">Home.</router-link>
     </p>
+    <!--form for search function of page-->
     <form v-on:submit.prevent="findWords">
       <p>
         Search for a word by association
@@ -18,6 +20,7 @@
         <button type="submit">Search</button>
       </p>
     </form>
+    <!---displays results if results are found-->
     <ul v-if="results && results.length > 0" class="results">
       <li v-for="item of results">
         <p>
@@ -26,6 +29,7 @@
         <p>{{item.score}}</p>
       </li>
     </ul>
+    <!--prompts user for better search criteria if no results are found-->
     <div v-else-if="results && results.length==0" class="no-results">
       <h2>No Words Found</h2>
       <p>Please adjust your search to find more words.</p>
@@ -44,15 +48,18 @@ export default {
   name: "associatedwithsearch",
   data() {
     return {
+      //sets variables for search
       results: null,
       errors: [],
       noun: '',
       
     };
   },
+  //creates a method that connects with the API and retrives either relevant data, or cathes an error
   methods: {
     findWords: function() {
       axios
+      //the API call
         .get("https://api.datamuse.com/words?*", {
           params: {
             rel_trg: this.noun
@@ -69,7 +76,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- CSS styles applied to this page only -->
 <style scoped>
 .associatedwithsearch {
   font-size: 1.4rem;

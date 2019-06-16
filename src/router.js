@@ -1,13 +1,14 @@
+//importing .vue and .js files for the project
 import Vue from 'vue'
 import Router from 'vue-router'
 import landing from '@/views/landing'
 import associatedwithsearch from '@/views/associatedwithsearch'
-// TODO: Import new component
 import describedbysearch from '@/views/describedbysearch'
 import wordcompletionsearch from '@/views/wordcompletionsearch'
 
 Vue.use(Router)
 
+//setting up a router and including routes to all 4 pages on the site
 export default new Router({
   routes: [
     {
@@ -30,6 +31,5 @@ export default new Router({
       name: 'wordcompletionsearch',
       component: wordcompletionsearch
     }
-    // TODO: Add new route definition here.
   ]
 })

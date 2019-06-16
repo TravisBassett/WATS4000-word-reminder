@@ -5,6 +5,7 @@
     <p>
         These are the search types that we have available to help you remember words that you forgot.
     </p>
+    <!--Vue.js router links to all three of the search pages offered on the EasyWordFinder-->
     <p>
       <router-link to="/associatedwithsearch">Search for words associated with other words.</router-link>
     </p>
@@ -18,9 +19,9 @@
     
 </template>
 
+<!-- there is no script on this page -->
 
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- CSS styles for this page -->
 <style scoped>
 .landing {
   font-size: 1.4rem;

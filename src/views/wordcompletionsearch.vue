@@ -2,6 +2,7 @@
   
 <div class="wordcompletionsearch">
     <h2>Use the word completion tool on EasyWordFinder.</h2>
+    <!--router links to other search types and landing page-->
     <p>
       <router-link to="/associatedwithsearch">Search for words associated with other words.</router-link>
     </p>
@@ -11,6 +12,7 @@
     <p>
       <router-link to="/">Home.</router-link>
     </p>
+    <!--form for search function of page-->
     <form v-on:submit.prevent="findWords">
       <p>
         Enter the first letters of a word and we'll try to guess it
@@ -26,6 +28,7 @@
         <p>{{item.score}}</p>
       </li>
     </ul>
+    <!---displays results if results are found-->
     <div v-else-if="results && results.length==0" class="no-results">
       <h2>No Words Found</h2>
       <p>Please adjust your search to find more words.</p>
@@ -44,15 +47,18 @@ export default {
   name: "wordcompletionsearch",
   data() {
     return {
+      //sets variables for search
       results: null,
       errors: [],
       noun: '',
       
     };
   },
+  //creates a method that connects with the API and retrives either relevant data, or cathes an error
   methods: {
     findWords: function() {
       axios
+      //the API call
         .get("https://api.datamuse.com/sug?", {
           params: {
             s: this.noun
@@ -69,7 +75,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- CSS styles applied to this page only -->
 <style scoped>
 .wordcompletionsearch {
   font-size: 1.4rem;
