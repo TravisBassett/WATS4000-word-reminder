@@ -20,8 +20,10 @@
         <button type="submit">Search</button>
       </p>
     </form>
+    <!--displays spinner-->
+    <spinner v-if="showSpinner"></spinner>
     <!---displays results if results are found-->
-    <ul v-if="results && results.length > 0" class="results">
+   <ul v-if="results && results.length > 0" class="results">
       <li v-for="item of results">
         <p>
           <strong>{{item.word}}</strong>
@@ -44,6 +46,8 @@
 <script>
 import axios from "axios";
 
+import CubeSpinner from '@/components/CubeSpinner';
+
 export default {
   name: "associatedwithsearch",
   data() {
@@ -58,6 +62,7 @@ export default {
   //creates a method that connects with the API and retrives either relevant data, or cathes an error
   methods: {
     findWords: function() {
+      this.showSpinner = true;
       axios
       //the API call
         .get("https://api.datamuse.com/words?*", {
@@ -66,13 +71,20 @@ export default {
           }
         })
         .then(response => {
+          this.showSpinner = false;
           this.results = response.data;
         })
         .catch(error => {
+          this.showSpinner = false;
           this.errors.push(error);
         });
     }
-  }
+  },
+
+components:{
+  spinner: CubeSpinner
+}
+
 };
 </script>
 

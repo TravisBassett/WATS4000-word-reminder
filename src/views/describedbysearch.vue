@@ -16,10 +16,13 @@
     <form v-on:submit.prevent="findWords">
       <p>
         Find a word by a word that commonly describes it
-        <input type="text" v-model="noun">
+        <input type="text" v-model="adjective">
         <button type="submit">Search</button>
       </p>
     </form>
+    <!--displays spinner-->
+    <spinner v-if="showSpinner"></spinner>
+    <!---displays results if results are found-->
     <ul v-if="results && results.length > 0" class="results">
       <li v-for="item of results">
         <p>
@@ -43,6 +46,8 @@
 <script>
 import axios from "axios";
 
+import CubeSpinner from '@/components/CubeSpinner';
+
 export default {
   name: "describedbysearch",
   data() {
@@ -50,28 +55,36 @@ export default {
       //sets variables for search
       results: null,
       errors: [],
-      noun: '',
+      adjective: '',
       
     };
   },
   //creates a method that connects with the API and retrives either relevant data, or cathes an error
   methods: {
     findWords: function() {
+      this.showSpinner = true;
       axios
       //the API call
         .get("https://api.datamuse.com/words", {
           params: {
-            rel_jjb: this.noun
+            rel_jjb: this.adjective
           }
         })
         .then(response => {
+          this.showSpinner = false;
           this.results = response.data;
         })
         .catch(error => {
+          this.showSpinner = false;
           this.errors.push(error);
         });
     }
-  }
+  },
+
+components:{
+  spinner: CubeSpinner
+}
+
 };
 </script>
 

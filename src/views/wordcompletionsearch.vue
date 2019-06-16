@@ -16,10 +16,12 @@
     <form v-on:submit.prevent="findWords">
       <p>
         Enter the first letters of a word and we'll try to guess it
-        <input type="text" v-model="noun">
+        <input type="text" v-model="partial">
         <button type="submit">Search</button>
       </p>
     </form>
+    <!--displays spinner-->
+    <spinner v-if="showSpinner"></spinner>
     <ul v-if="results && results.length > 0" class="results">
       <li v-for="item of results">
         <p>
@@ -43,6 +45,8 @@
 <script>
 import axios from "axios";
 
+import CubeSpinner from '@/components/CubeSpinner';
+
 export default {
   name: "wordcompletionsearch",
   data() {
@@ -50,28 +54,36 @@ export default {
       //sets variables for search
       results: null,
       errors: [],
-      noun: '',
+      partial: '',
       
     };
   },
   //creates a method that connects with the API and retrives either relevant data, or cathes an error
   methods: {
     findWords: function() {
+      this.showSpinner = true;
       axios
       //the API call
         .get("https://api.datamuse.com/sug?", {
           params: {
-            s: this.noun
+            s: this.partial
           }
         })
         .then(response => {
+          this.showSpinner = false;
           this.results = response.data;
         })
         .catch(error => {
+          this.showSpinner = false;
           this.errors.push(error);
         });
     }
-  }
+  },
+
+components:{
+  spinner: CubeSpinner
+}
+
 };
 </script>
 
