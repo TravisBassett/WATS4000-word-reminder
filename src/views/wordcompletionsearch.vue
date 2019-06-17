@@ -16,7 +16,7 @@
     <form v-on:submit.prevent="findWords">
       <p>
         Enter the first letters of a word and we'll try to guess it
-        <input type="text" v-model="partial">
+        <input type="text" v-model="partial" placeholder="superca">
         <button type="submit">Search</button>
       </p>
     </form>

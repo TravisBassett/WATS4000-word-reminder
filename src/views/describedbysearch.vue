@@ -16,7 +16,7 @@
     <form v-on:submit.prevent="findWords">
       <p>
         Find a word by a word that commonly describes it
-        <input type="text" v-model="adjective">
+        <input type="text" v-model="adjective" placeholder="tranquil">
         <button type="submit">Search</button>
       </p>
     </form>

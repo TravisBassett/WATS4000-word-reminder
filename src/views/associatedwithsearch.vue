@@ -16,7 +16,7 @@
     <form v-on:submit.prevent="findWords">
       <p>
         Search for a word by association
-        <input type="text" v-model="noun">
+        <input type="text" v-model="noun" placeholder="reasonable">
         <button type="submit">Search</button>
       </p>
     </form>
